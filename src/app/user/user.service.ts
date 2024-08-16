@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { IUser } from './interface/User.interface';
+import { MessageService } from '../message/message.service';
 
 @Injectable()
 export class UserService {
@@ -16,7 +17,10 @@ export class UserService {
     },
   ];
 
+  constructor(private messageService: MessageService) {}
+
   async findAllUser(): Promise<IUser[]> {
+    this.messageService.setMessage('Find all user successfully');
     return this.user;
   }
 }

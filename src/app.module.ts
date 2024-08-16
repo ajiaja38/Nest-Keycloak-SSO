@@ -7,6 +7,7 @@ import { MessageModule } from './app/message/message.module';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { ExceptionFilter } from './filter/exception.filter';
 import { ResponseInterceptor } from './interceptor/response.interceptor';
+import { AuthModule } from './app/auth/auth.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ResponseInterceptor } from './interceptor/response.interceptor';
     }),
     UserModule,
     MessageModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [
