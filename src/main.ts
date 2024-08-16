@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 import { Logger } from '@nestjs/common';
 
 async function bootstrap(): Promise<void> {
-  const port: string | number = process.env.port || 5500;
+  const port: string | number = process.env.PORT || 5500;
   const globalPrefix: string = 'api/v1';
 
   const app: NestApplication =

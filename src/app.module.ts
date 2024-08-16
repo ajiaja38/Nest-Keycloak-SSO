@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
-import { AuthModule } from './app/auth/auth.module';
 import { UserModule } from './app/user/user.module';
 import { MessageModule } from './app/message/message.module';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
@@ -15,7 +14,6 @@ import { ResponseInterceptor } from './interceptor/response.interceptor';
       isGlobal: true,
       envFilePath: '.env',
     }),
-    AuthModule,
     UserModule,
     MessageModule,
   ],
