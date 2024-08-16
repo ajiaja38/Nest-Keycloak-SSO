@@ -18,9 +18,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   async validate(payload: any): Promise<IJwtPayload> {
     if (!payload) throw new UnauthorizedException('Invalid Token');
 
-    const { name, email, resource_access } = payload;
+    const { sub, name, email, resource_access } = payload;
 
     return {
+      id: sub,
       name,
       email,
       roles: resource_access[Object.keys(resource_access)[0]].roles,

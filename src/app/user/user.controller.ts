@@ -5,6 +5,8 @@ import { JwtAuthGuard } from 'src/guard/jwt.auth.guard';
 import { RoleGuard } from 'src/guard/roles.guard';
 import { Roles } from 'src/decorator/roles.decorator';
 import { ERole } from 'src/utils/types/enum/role.enum';
+import { UserDec } from 'src/decorator/user.decorator';
+import { IJwtPayload } from '../auth/interface/jwt-payload.interface';
 
 @Controller('user')
 export class UserController {
@@ -12,8 +14,9 @@ export class UserController {
 
   @Get('find-all')
   @UseGuards(JwtAuthGuard, RoleGuard)
-  @Roles(ERole.USER)
-  async findAllUserHandler(): Promise<IUser[]> {
+  @Roles(ERole.ADMIN)
+  async findAllUserHandler(@UserDec() user: IJwtPayload): Promise<IUser[]> {
+    console.log(user);
     return this.userService.findAllUser();
   }
 }
